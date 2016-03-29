@@ -8,13 +8,9 @@
 /// <reference path="../objects/scene.ts" />
 
 /// <reference path="../objects/gameobjects.ts" />
-/// <reference path="../objects/ocean.ts" />
-/// <reference path="../objects/island.ts" />
-/// <reference path="../objects/cloud.ts" />
-/// <reference path="../objects/player.ts" />
-
-/// <reference path="../managers/collision.ts" />
+/// <reference path="../objects/sky.ts" />
 
 /// <reference path="../scenes/end.ts" />
 /// <reference path="../scenes/play.ts" />
 /// <reference path="../scenes/menu.ts" />
+/// <reference path="../scenes/instruction.ts" />

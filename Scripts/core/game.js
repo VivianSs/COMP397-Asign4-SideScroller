@@ -10,15 +10,16 @@ var scene;
 var menu;
 var play;
 var end;
+var instruction;
 var assetData = [
     // Add your Assets here
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
     { id: "BackButton", src: "../../Assets/images/BackButton.png" },
-    { id: "ocean", src: "../../Assets/images/ocean.gif" },
+    { id: "sky", src: "../../Assets/images/sky.png" },
     { id: "plane", src: "../../Assets/images/plane.png" },
-    { id: "island", src: "../../Assets/images/island.png" },
-    { id: "cloud", src: "../../Assets/images/cloud.png" },
+    { id: "gold", src: "../../Assets/images/gold.png" },
+    { id: "bird", src: "../../Assets/images/bird.png" },
 ];
 function preload() {
     assets = new createjs.LoadQueue();
@@ -73,6 +74,13 @@ function changeScene() {
             menu = new scenes.Menu();
             currentScene = menu;
             console.log("Starting MENU Scene");
+            break;
+        case config.Scene.INSTRUCTION:
+            // show the INSTRUCTION scene
+            stage.removeAllChildren();
+            instruction = new scenes.Instruction();
+            currentScene = instruction;
+            console.log("Starting INSTRUCTION Scene");
             break;
         case config.Scene.PLAY:
             // show the PLAY scene

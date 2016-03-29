@@ -13,16 +13,17 @@ var scene: number;
 var menu: scenes.Menu;
 var play: scenes.Play;
 var end: scenes.End;
+var instruction: scenes.Instruction;
 
-var assetData:objects.Asset[] = [
+var assetData: objects.Asset[] = [
     // Add your Assets here
-    {id: "StartButton", src:"../../Assets/images/StartButton.png"},
-    {id: "RestartButton", src:"../../Assets/images/RestartButton.png"},
-    {id: "BackButton", src:"../../Assets/images/BackButton.png"},
-    {id: "ocean", src:"../../Assets/images/ocean.gif"},
-    {id: "plane", src:"../../Assets/images/plane.png"},
-    {id: "island", src:"../../Assets/images/island.png"},
-    {id: "cloud", src:"../../Assets/images/cloud.png"},
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "sky", src: "../../Assets/images/sky.png" },
+    { id: "plane", src: "../../Assets/images/plane.png" },
+    { id: "gold", src: "../../Assets/images/gold.png" },
+    { id: "bird", src: "../../Assets/images/bird.png" },
 ];
 
 function preload() {
@@ -35,22 +36,22 @@ function preload() {
 function init(): void {
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
-    
+
     // create our main display list container
     stage = new createjs.Stage(canvas);
-    
+
     // Enable mouse events
     stage.enableMouseOver(20);
-    
+
     // set the framerate to 60 frames per second
     createjs.Ticker.setFPS(config.Game.FPS);
-    
+
     // create an event listener to count off frames
     createjs.Ticker.on("tick", gameLoop, this);
-    
+
     // sets up our stats counting workflow
-    setupStats(); 
-    
+    setupStats();
+
     // set initial scene
     scene = config.Scene.MENU;
     changeScene();
@@ -59,14 +60,14 @@ function init(): void {
 // Main Game Loop function that handles what happens each "tick" or frame
 function gameLoop(event: createjs.Event): void {
     // start collecting stats for this frame
-    stats.begin(); 
-    
+    stats.begin();
+
     // calling State's update method
-    currentScene.update(); 
-    
+    currentScene.update();
+
     // redraw/refresh stage every frame
     stage.update();
-    
+
     // stop collecting stats for this frame
     stats.end();
 }
@@ -83,7 +84,7 @@ function setupStats(): void {
 
 // Finite State Machine used to change Scenes
 function changeScene(): void {
-    
+
     // Launch various scenes
     switch (scene) {
         case config.Scene.MENU:
@@ -92,6 +93,13 @@ function changeScene(): void {
             menu = new scenes.Menu();
             currentScene = menu;
             console.log("Starting MENU Scene");
+            break;
+        case config.Scene.INSTRUCTION:
+            // show the INSTRUCTION scene
+            stage.removeAllChildren();
+            instruction = new scenes.Instruction();
+            currentScene = instruction;
+            console.log("Starting INSTRUCTION Scene");
             break;
         case config.Scene.PLAY:
             // show the PLAY scene
