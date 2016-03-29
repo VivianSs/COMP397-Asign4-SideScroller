@@ -8,7 +8,7 @@ module objects {
         constructor(){
             super(("sky"));
             
-              this._speed.x = 5;// sky speed
+              this._speed.x = 6;// sky speed
               this._reset(0);
         }
         

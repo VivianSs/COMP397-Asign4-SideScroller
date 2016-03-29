@@ -5,37 +5,39 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // GOLD class +++++++++++++++++++++++++++++++++++
-    var Gold = (function (_super) {
-        __extends(Gold, _super);
+    // BIRD class +++++++++++++++++++++++++++++++++++
+    var Bird = (function (_super) {
+        __extends(Bird, _super);
         //private instance variables
         // constructor ++++++++++++++++++++++++++++++++++++++++++++
-        function Gold() {
-            _super.call(this, ("gold"));
-            this._speed.x = 4;
+        function Bird() {
+            _super.call(this, ("bird"));
             this._reset(this._rightBounds);
-            this.name = "gold";
+            this.name = "bird";
         }
         // private methods+++++++++++++++++++++++++++++++++++++++++
-        Gold.prototype._checkBounds = function (value) {
-            //check to see if the righ of the gold 
+        Bird.prototype._checkBounds = function (value) {
+            //check to see if the right of the cloud 
             // has outside the viewport
             if (this.x <= value) {
                 this._reset(this._rightBounds);
             }
         };
-        // reset the gold offscreen
-        Gold.prototype._reset = function (value) {
+        // reset the bird offscreen
+        Bird.prototype._reset = function (value) {
+            this._speed.x = Math.floor(Math.random() * 3) + 4;
+            this._speed.y = Math.floor(Math.random() * 4) - 2;
             this.x = value;
             this.y = Math.floor(Math.random() * this._bottomBounds) + this._topBounds;
         };
-        Gold.prototype.update = function () {
-            //scroll the gold 5 px per frame
+        Bird.prototype.update = function () {
+            //scroll the bird right to left 
+            this.y += this._speed.y;
             this.x -= this._speed.x;
             this._checkBounds(this._leftBounds);
         };
-        return Gold;
+        return Bird;
     })(objects.GameObjetcs);
-    objects.Gold = Gold;
+    objects.Bird = Bird;
 })(objects || (objects = {}));
-//# sourceMappingURL=gold.js.map
+//# sourceMappingURL=bird.js.map

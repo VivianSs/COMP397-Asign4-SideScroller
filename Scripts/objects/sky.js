@@ -12,7 +12,7 @@ var objects;
         // constructor ++++++++++++++++++++++++++++++++++++++++++++
         function Sky() {
             _super.call(this, ("sky"));
-            this._speed.x = 5; // sky speed
+            this._speed.x = 6; // sky speed
             this._reset(0);
         }
         // private methods+++++++++++++++++++++++++++++++++++++++++

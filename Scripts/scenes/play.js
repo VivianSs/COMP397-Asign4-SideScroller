@@ -15,12 +15,21 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Play.prototype.start = function () {
+            //set bird count
+            this._birdCount = 3;
+            //instantiate bird array
+            this._birds = new Array();
             //added sky to the scene
             this._sky = new objects.Sky();
             this.addChild(this._sky);
             // added gold to the scene
             this._gold = new objects.Gold();
             this.addChild(this._gold);
+            // added bird to the scene
+            for (var bird = 0; bird < this._birdCount; bird++) {
+                this._birds[bird] = new objects.Bird();
+                this.addChild(this._birds[bird]);
+            }
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -28,6 +37,9 @@ var scenes;
         Play.prototype.update = function () {
             this._sky.update();
             this._gold.update();
+            this._birds.forEach(function (bird) {
+                bird.update();
+            });
         };
         return Play;
     })(objects.Scene);
