@@ -6,6 +6,7 @@ module scenes {
         private _gold: objects.Gold;
         private _birds: objects.Bird[];
         private _birdCount: number;
+        private _player: objects.Player;
 
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -32,6 +33,10 @@ module scenes {
             this._gold = new objects.Gold();
             this.addChild(this._gold);
 
+            // added player to the scene
+            this._player = new objects.Player();
+            this.addChild(this._player);
+
             // added bird to the scene
             for (var bird: number = 0; bird < this._birdCount; bird++) {
                 this._birds[bird] = new objects.Bird();
@@ -47,12 +52,13 @@ module scenes {
         public update(): void {
             this._sky.update();
             this._gold.update();
+            this._player.update();
 
             this._birds.forEach(bird => {
                 bird.update();
             });
-            
-           
+
+
 
         }
 

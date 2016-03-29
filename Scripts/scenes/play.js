@@ -25,6 +25,9 @@ var scenes;
             // added gold to the scene
             this._gold = new objects.Gold();
             this.addChild(this._gold);
+            // added player to the scene
+            this._player = new objects.Player();
+            this.addChild(this._player);
             // added bird to the scene
             for (var bird = 0; bird < this._birdCount; bird++) {
                 this._birds[bird] = new objects.Bird();
@@ -37,6 +40,7 @@ var scenes;
         Play.prototype.update = function () {
             this._sky.update();
             this._gold.update();
+            this._player.update();
             this._birds.forEach(function (bird) {
                 bird.update();
             });
