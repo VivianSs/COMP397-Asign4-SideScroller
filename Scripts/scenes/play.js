@@ -18,12 +18,16 @@ var scenes;
             //added sky to the scene
             this._sky = new objects.Sky();
             this.addChild(this._sky);
+            // added gold to the scene
+            this._gold = new objects.Gold();
+            this.addChild(this._gold);
             // add this scene to the global stage container
             stage.addChild(this);
         };
         // PLAY Scene updates here
         Play.prototype.update = function () {
             this._sky.update();
+            this._gold.update();
         };
         return Play;
     })(objects.Scene);
