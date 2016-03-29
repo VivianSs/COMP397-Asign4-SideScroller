@@ -33,17 +33,22 @@ var scenes;
                 this._birds[bird] = new objects.Bird();
                 this.addChild(this._birds[bird]);
             }
+            // adder collision manager to the scene
+            this._collision = new managers.Collision(this._player);
             // add this scene to the global stage container
             stage.addChild(this);
         };
         // PLAY Scene updates here
         Play.prototype.update = function () {
+            var _this = this;
             this._sky.update();
             this._gold.update();
             this._player.update();
             this._birds.forEach(function (bird) {
                 bird.update();
+                _this._collision.check(bird);
             });
+            this._collision.check(this._gold);
         };
         return Play;
     })(objects.Scene);

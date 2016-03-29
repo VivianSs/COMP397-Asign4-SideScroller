@@ -7,6 +7,7 @@ module scenes {
         private _birds: objects.Bird[];
         private _birdCount: number;
         private _player: objects.Player;
+        private _collision: managers.Collision;
 
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -43,6 +44,9 @@ module scenes {
                 this.addChild(this._birds[bird]);
             }
 
+            // adder collision manager to the scene
+            this._collision = new managers.Collision(this._player);
+
 
             // add this scene to the global stage container
             stage.addChild(this);
@@ -56,12 +60,12 @@ module scenes {
 
             this._birds.forEach(bird => {
                 bird.update();
+                this._collision.check(bird);
             });
 
-
+            this._collision.check(this._gold);
 
         }
-
 
 
         //EVENT HANDLERS ++++++++++++++++++++
