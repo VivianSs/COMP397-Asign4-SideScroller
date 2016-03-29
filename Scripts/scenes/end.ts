@@ -5,6 +5,7 @@ module scenes {
         private _background: createjs.Bitmap;
         private _endLabel: objects.Label;
         private _restartButton: objects.Button;
+        private _finalScore: objects.ScoreSystem;
         
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -24,8 +25,14 @@ module scenes {
             this._endLabel = new objects.Label(
                 "END SCENE", "60px Consolas",
                 "#000000",
-                config.Screen.CENTER_X, config.Screen.CENTER_Y, true);
+                config.Screen.CENTER_X, config.Screen.CENTER_Y-30, true);
             this.addChild(this._endLabel);
+            
+            // add final score to the scene
+            this._finalScore = new objects.ScoreSystem("ScoreLabel", 
+            210,
+            config.Screen.CENTER_Y + 60);
+            this.addChild(this._finalScore);
             
             // add the BACK button to the OVER scene
             this._restartButton = new objects.Button(

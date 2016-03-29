@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// MENU SCENE
+// INSTRUCTION SCENE
 var scenes;
 (function (scenes) {
     var Instruction = (function (_super) {
@@ -15,9 +15,12 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Instruction.prototype.start = function () {
+            // added background 
+            this._background = new createjs.Bitmap(assets.getResult("InstructionScene"));
+            this.addChild(this._background);
             //Add Menu Label
-            this._menuLabel = new objects.Label("MENU SCENE", "60px Consolas", "#000000", config.Screen.CENTER_X, config.Screen.CENTER_Y, true);
-            this.addChild(this._menuLabel);
+            this._instructionLabel = new objects.Label("INSTRUCTION", "60px Consolas", "#000000", 150, 138, false);
+            this.addChild(this._instructionLabel);
             // add the Start button to the MENU scene
             this._startButton = new objects.Button("StartButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180, true);
             this.addChild(this._startButton);

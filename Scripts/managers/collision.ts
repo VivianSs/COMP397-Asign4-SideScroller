@@ -9,7 +9,7 @@ module managers {
         constructor(player: objects.Player) {
             this._player = player;
             this._score = 0;
-            this._lifeCount = 100;
+            this._lifeCount = 500;
         }
 
         public distance(startPoint: createjs.Point, endPoint: createjs.Point): number {

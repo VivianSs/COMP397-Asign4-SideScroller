@@ -5,7 +5,7 @@ var managers;
         function Collision(player) {
             this._player = player;
             this._score = 0;
-            this._lifeCount = 100;
+            this._lifeCount = 500;
         }
         Collision.prototype.distance = function (startPoint, endPoint) {
             return Math.sqrt(Math.pow((endPoint.x - startPoint.x), 2) + Math.pow((endPoint.y - startPoint.y), 2));

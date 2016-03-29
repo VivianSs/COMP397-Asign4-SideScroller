@@ -22,10 +22,15 @@ var scenes;
             this._menuLabel = new objects.Label("MENU SCENE", "60px Consolas", "#000000", config.Screen.CENTER_X, config.Screen.CENTER_Y, true);
             this.addChild(this._menuLabel);
             // add the Start button to the MENU scene
-            this._startButton = new objects.Button("StartButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180, true);
+            this._startButton = new objects.Button("StartButton", config.Screen.CENTER_X - 170, config.Screen.CENTER_Y + 180, true);
             this.addChild(this._startButton);
+            // add the instruction button to the MENU scene
+            this._instructionButton = new objects.Button("InstructionButton", config.Screen.CENTER_X + 170, config.Screen.CENTER_Y + 180, true);
+            this.addChild(this._instructionButton);
             // Start Button event listener
             this._startButton.on("click", this._startButtonClick, this);
+            // Instruction Button event listener
+            this._instructionButton.on("click", this._instructionButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -37,6 +42,10 @@ var scenes;
         Menu.prototype._startButtonClick = function (event) {
             // Switch to the LEFT_CAVE Scene
             scene = config.Scene.PLAY;
+            changeScene();
+        };
+        Menu.prototype._instructionButtonClick = function (event) {
+            scene = config.Scene.INSTRUCTION;
             changeScene();
         };
         return Menu;

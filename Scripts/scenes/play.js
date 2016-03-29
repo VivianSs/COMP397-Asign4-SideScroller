@@ -16,7 +16,7 @@ var scenes;
         // Start Method
         Play.prototype.start = function () {
             //set bird count
-            this._birdCount = 3;
+            this._birdCount = 4;
             //instantiate bird array
             this._birds = new Array();
             //added sky to the scene
