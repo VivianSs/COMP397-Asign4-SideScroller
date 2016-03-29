@@ -4,6 +4,8 @@ var managers;
     var Collision = (function () {
         function Collision(player) {
             this._player = player;
+            this._score = 0;
+            this._lifeCount = 100;
         }
         Collision.prototype.distance = function (startPoint, endPoint) {
             return Math.sqrt(Math.pow((endPoint.x - startPoint.x), 2) + Math.pow((endPoint.y - startPoint.y), 2));
@@ -23,11 +25,13 @@ var managers;
             if (this.distance(startPoint, endPoint) < minDistance) {
                 //check if it's an bird hit
                 if (object.name === "bird") {
-                    console.log("bird hit!");
+                    this._lifeCount--;
+                    return this._lifeCount;
                 }
                 //check if it's a gold hit
                 if (object.name === "gold") {
-                    console.log("gold hit");
+                    this._score++;
+                    return this._score;
                 }
             }
         };

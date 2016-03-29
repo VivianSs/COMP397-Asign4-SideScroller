@@ -9,6 +9,12 @@ module scenes {
         private _player: objects.Player;
         private _collision: managers.Collision;
 
+        private _scoreLabel: objects.ScoreSystem;
+        private _lifeLabel: objects.ScoreSystem;
+        public _scoreText: objects.Label;         
+        public _lifeText: objects.Label;
+       
+
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
             super();
@@ -20,6 +26,8 @@ module scenes {
 
         // Start Method
         public start(): void {
+
+
             //set bird count
             this._birdCount = 3;
 
@@ -44,8 +52,29 @@ module scenes {
                 this.addChild(this._birds[bird]);
             }
 
-            // adder collision manager to the scene
+            // added collision manager to the scene
             this._collision = new managers.Collision(this._player);
+
+            // added score label to the scene
+            this._scoreLabel = new objects.ScoreSystem("ScoreLabel", 0, 0);
+            this.addChild(this._scoreLabel);
+
+            //added life label to the scene
+            this._lifeLabel = new objects.ScoreSystem("LifeLabel", 255, 4);
+            this.addChild(this._lifeLabel);
+
+            // added score text to the scene
+            this._scoreText = new objects.Label("0",
+                "18px Consolas", "#FFCC00",
+                66, 13, false);
+            this.addChild(this._scoreText);
+
+            // added life text to the scene
+            this._lifeText = new objects.Label("0",
+                "18px Consolas", "#FFCC00",
+                320, 13, false);
+            this.addChild(this._lifeText);
+
 
 
             // add this scene to the global stage container
@@ -60,11 +89,16 @@ module scenes {
 
             this._birds.forEach(bird => {
                 bird.update();
-                this._collision.check(bird);
+            this._collision.check(bird);
+            if(this._collision.check(bird) <= 0)
+            {
+                scene = config.Scene.END;
+                changeScene();
+            }      
             });
-
-            this._collision.check(this._gold);
-
+            
+            this._collision.check(this._gold) ;
+                
         }
 
 

@@ -3,42 +3,50 @@ module managers {
     export class Collision {
         // private instance variables
         private _player: objects.Player;
+        private _score: number;
+        private _lifeCount: number;
+
         constructor(player: objects.Player) {
             this._player = player;
+            this._score = 0;
+            this._lifeCount = 100;
         }
 
         public distance(startPoint: createjs.Point, endPoint: createjs.Point): number {
             return Math.sqrt(Math.pow((endPoint.x - startPoint.x), 2) + Math.pow((endPoint.y - startPoint.y), 2));
         }
 
-        public check(object: objects.GameObjetcs):void {
+        public check(object: objects.GameObjetcs): number {
             var startPoint: createjs.Point = new createjs.Point();
             var endPoint: createjs.Point = new createjs.Point();
-            var playerHalfWidth:number = this._player.width * 0.5;
-            var objectHalfWidth:number = object.width * 0.5;
-            var minDistance:number = playerHalfWidth + objectHalfWidth;
-            
+            var playerHalfWidth: number = this._player.width * 0.5;
+            var objectHalfWidth: number = object.width * 0.5;
+            var minDistance: number = playerHalfWidth + objectHalfWidth;
+
             startPoint.x = this._player.x;
             startPoint.y = this._player.y;
-            
+
             endPoint.x = object.centerX + object.x;
-            endPoint.y = object.centerY+ object.y;
-            
-           
-           // check if the distance between the player and th eother object is less 
-           // than the minimum distance
-            if (this.distance(startPoint, endPoint) < minDistance){
-               //check if it's an bird hit
-               if(object.name === "bird"){
-                   console.log("bird hit!");
-               }
-               
-               //check if it's a gold hit
-               if(object.name === "gold"){
-                   console.log("gold hit");
-               }
+            endPoint.y = object.centerY + object.y;
+
+
+            // check if the distance between the player and th eother object is less 
+            // than the minimum distance
+            if (this.distance(startPoint, endPoint) < minDistance) {
+                //check if it's an bird hit
+                if (object.name === "bird") {
+                    this._lifeCount--;
+                                                        
+                    return this._lifeCount;
+                    
+                }
+
+                //check if it's a gold hit
+                if (object.name === "gold") {
+                    this._score++;
+                    return this._score;
+                }
             }
-       
+        }
     }
-}
 }

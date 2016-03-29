@@ -16,10 +16,13 @@ var assetData = [
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
     { id: "RestartButton", src: "../../Assets/images/RestartButton.png" },
     { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "MenuScene", src: "../../Assets/images/MenuScene.png" },
     { id: "sky", src: "../../Assets/images/sky.png" },
     { id: "plane", src: "../../Assets/images/plane.png" },
     { id: "gold", src: "../../Assets/images/gold.png" },
     { id: "bird", src: "../../Assets/images/bird.png" },
+    { id: "LifeLabel", src: "../../Assets/images/lifelabel.png" },
+    { id: "ScoreLabel", src: "../../Assets/images/scorelabel.png" },
 ];
 function preload() {
     assets = new createjs.LoadQueue();

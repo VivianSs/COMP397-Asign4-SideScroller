@@ -2,6 +2,7 @@
 module scenes {
     export class End extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
+        private _background: createjs.Bitmap;
         private _endLabel: objects.Label;
         private _restartButton: objects.Button;
         
@@ -15,6 +16,10 @@ module scenes {
         
         // Start Method
         public start(): void {
+             // add background
+            this._background = new createjs.Bitmap(assets.getResult("MenuScene"));
+            this.addChild(this._background);
+            
             //Add Menu Label
             this._endLabel = new objects.Label(
                 "END SCENE", "60px Consolas",
