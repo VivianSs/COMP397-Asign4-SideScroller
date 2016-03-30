@@ -1,4 +1,9 @@
-﻿module objects {
+﻿// Source Name: button.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a button super calss for all the button objects
+// Revision History: version 10
+module objects {
     export class Button extends createjs.Bitmap {
         //PRIVATE INSTANCE VARIABLES
         width: number;

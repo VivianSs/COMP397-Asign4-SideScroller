@@ -1,3 +1,8 @@
+// Source Name: scene.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a super class for all the scenes
+// Revision History: version 10
 module objects {
     // Scene Class
     export class Scene extends createjs.Container {

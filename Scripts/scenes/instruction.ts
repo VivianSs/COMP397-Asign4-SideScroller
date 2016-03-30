@@ -1,3 +1,9 @@
+// Source Name: instruction.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a module for instruction scene including the rules and guidelines
+// Revision History: version 10
+
 // INSTRUCTION SCENE
 module scenes {
     export class Instruction extends objects.Scene {

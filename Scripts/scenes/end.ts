@@ -1,4 +1,9 @@
-// LEFT_CAVE SCENE
+// Source Name: end.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a  module for the end scene
+// Revision History: version 10
+
 module scenes {
     export class End extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++

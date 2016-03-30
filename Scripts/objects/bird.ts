@@ -1,3 +1,9 @@
+// Source Name: bird.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a bird module as obstacle in the game
+// Revision History: version 10
+
 module objects {
     // BIRD class +++++++++++++++++++++++++++++++++++
     export class Bird extends objects.GameObjetcs {

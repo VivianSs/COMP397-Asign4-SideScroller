@@ -1,4 +1,11 @@
-﻿// MENU SCENE
+﻿// Source Name: menu.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a module for menu scene which allows you to start or view the instruction
+// Revision History: version 10
+
+// MENU SCENE
+
 module scenes {
     export class Menu extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++

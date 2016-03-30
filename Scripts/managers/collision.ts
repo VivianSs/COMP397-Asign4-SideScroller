@@ -1,3 +1,9 @@
+// Source Name: bird.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a collision module to check if the
+// player hit the birds or gold, and then calculae the scores and lifetime
+// Revision History: version 10
 module managers {
     // COLLISION MANAGER CLASS
     export class Collision {

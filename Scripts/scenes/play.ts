@@ -1,3 +1,9 @@
+// Source Name: play.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a module for main play scene where the main game occurs
+// Revision History: version 10
+
 // PLAY SCENE
 module scenes {
     export class Play extends objects.Scene {

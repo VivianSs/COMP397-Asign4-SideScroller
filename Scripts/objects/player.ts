@@ -1,3 +1,8 @@
+// Source Name: bird.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a player module for the plane object
+// Revision History: version 10
 module objects {
     // PLAYER CLASS ++++++++++++++++++++++++++++++++
     export class Player extends createjs.Bitmap {

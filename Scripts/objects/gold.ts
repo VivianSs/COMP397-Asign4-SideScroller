@@ -1,3 +1,8 @@
+// Source Name: gold.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a gold module as points to collect in the game
+// Revision History: version 10
 module objects {
     // GOLD class +++++++++++++++++++++++++++++++++++
     export class Gold extends objects.GameObjetcs {

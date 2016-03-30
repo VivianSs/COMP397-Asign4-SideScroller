@@ -1,3 +1,8 @@
+// Source Name: sky.ts
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a sky module as basic side roller in the game
+// Revision History: version 10
 module objects {
     // SKY class +++++++++++++++++++++++++++++++++++
     export class Sky extends objects.GameObjetcs{

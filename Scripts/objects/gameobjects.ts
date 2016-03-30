@@ -1,3 +1,8 @@
+// Source Name: gameobjects
+// Author's name: Sisi Li
+// Last modified: March 29, 2016
+// Program description: create a super class for the bird object and gold object 
+// Revision History: version 10
 module objects {
     // GameObjetcs super class +++++++++++++++++++++++++++++++++++
     export class GameObjetcs extends createjs.Bitmap {
