@@ -11,9 +11,11 @@ module scenes {
 
         private _scoreLabel: objects.ScoreSystem;
         private _lifeLabel: objects.ScoreSystem;
-        public _scoreText: objects.Label;         
-        public _lifeText: objects.Label;
-       
+        private _scoreText: objects.Label;
+        private _lifeText: objects.Label;
+
+        private _finalScore: number = 0;
+
 
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -26,7 +28,6 @@ module scenes {
 
         // Start Method
         public start(): void {
-
 
             //set bird count
             this._birdCount = 4;
@@ -64,13 +65,13 @@ module scenes {
             this.addChild(this._lifeLabel);
 
             // added score text to the scene
-            this._scoreText = new objects.Label("0",
+            this._scoreText = new objects.Label(this._collision._score.toString(),
                 "18px Consolas", "#FFCC00",
                 66, 13, false);
             this.addChild(this._scoreText);
 
             // added life text to the scene
-            this._lifeText = new objects.Label("0",
+            this._lifeText = new objects.Label(this._collision._lifeCount.toString(),
                 "18px Consolas", "#FFCC00",
                 320, 13, false);
             this.addChild(this._lifeText);
@@ -79,26 +80,36 @@ module scenes {
 
             // add this scene to the global stage container
             stage.addChild(this);
+
+
+
         }
 
         // PLAY Scene updates here
-        public update(): void {
+        public update(): number{
             this._sky.update();
             this._gold.update();
             this._player.update();
 
+
+
             this._birds.forEach(bird => {
                 bird.update();
-            this._collision.check(bird);
-            if(this._collision.check(bird) <= 0)
-            {
-                scene = config.Scene.END;
-                changeScene();
-            }      
+                if (parseInt(this._collision.check(bird)) <= 0) {
+                    scene = config.Scene.END;
+                    changeScene();
+                }
             });
-            
-            this._collision.check(this._gold) ;
-                
+            this._collision.check(this._gold);
+
+            this._lifeText.text = this._collision._lifeCount.toString();
+            this._scoreText.text = this._collision._score.toString();
+
+            if (this._collision._lifeCount <= 0) {
+                this._finalScore = this._collision._score;
+                console.log(this._finalScore);
+            }
+            return this._finalScore;
         }
 
 

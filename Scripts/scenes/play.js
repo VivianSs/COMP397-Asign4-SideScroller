@@ -11,6 +11,7 @@ var scenes;
         // CONSTRUCTOR ++++++++++++++++++++++
         function Play() {
             _super.call(this);
+            this._finalScore = 0;
         }
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
@@ -42,10 +43,10 @@ var scenes;
             this._lifeLabel = new objects.ScoreSystem("LifeLabel", 255, 4);
             this.addChild(this._lifeLabel);
             // added score text to the scene
-            this._scoreText = new objects.Label("0", "18px Consolas", "#FFCC00", 66, 13, false);
+            this._scoreText = new objects.Label(this._collision._score.toString(), "18px Consolas", "#FFCC00", 66, 13, false);
             this.addChild(this._scoreText);
             // added life text to the scene
-            this._lifeText = new objects.Label("0", "18px Consolas", "#FFCC00", 320, 13, false);
+            this._lifeText = new objects.Label(this._collision._lifeCount.toString(), "18px Consolas", "#FFCC00", 320, 13, false);
             this.addChild(this._lifeText);
             // add this scene to the global stage container
             stage.addChild(this);
@@ -58,13 +59,19 @@ var scenes;
             this._player.update();
             this._birds.forEach(function (bird) {
                 bird.update();
-                _this._collision.check(bird);
-                if (_this._collision.check(bird) <= 0) {
+                if (parseInt(_this._collision.check(bird)) <= 0) {
                     scene = config.Scene.END;
                     changeScene();
                 }
             });
             this._collision.check(this._gold);
+            this._lifeText.text = this._collision._lifeCount.toString();
+            this._scoreText.text = this._collision._score.toString();
+            if (this._collision._lifeCount <= 0) {
+                this._finalScore = this._collision._score;
+                console.log(this._finalScore);
+            }
+            return this._finalScore;
         };
         return Play;
     })(objects.Scene);

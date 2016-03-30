@@ -24,6 +24,10 @@ var scenes;
             // add final score to the scene
             this._finalScore = new objects.ScoreSystem("ScoreLabel", 210, config.Screen.CENTER_Y + 60);
             this.addChild(this._finalScore);
+            //add final score       
+            this._playScene = new scenes.Play();
+            this._score = new objects.Label(this._playScene.update().toString(), "18px Consolas", "#FFCC00", 279, 310, false);
+            this.addChild(this._score);
             // add the BACK button to the OVER scene
             this._restartButton = new objects.Button("RestartButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180, true);
             this.addChild(this._restartButton);

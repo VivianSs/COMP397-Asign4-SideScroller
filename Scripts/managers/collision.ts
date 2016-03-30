@@ -3,8 +3,9 @@ module managers {
     export class Collision {
         // private instance variables
         private _player: objects.Player;
-        private _score: number;
-        private _lifeCount: number;
+        public _score: number;
+        public _lifeCount: number;
+
 
         constructor(player: objects.Player) {
             this._player = player;
@@ -12,11 +13,12 @@ module managers {
             this._lifeCount = 500;
         }
 
+
         public distance(startPoint: createjs.Point, endPoint: createjs.Point): number {
             return Math.sqrt(Math.pow((endPoint.x - startPoint.x), 2) + Math.pow((endPoint.y - startPoint.y), 2));
         }
 
-        public check(object: objects.GameObjetcs): number {
+        public check(object: objects.GameObjetcs):string {
             var startPoint: createjs.Point = new createjs.Point();
             var endPoint: createjs.Point = new createjs.Point();
             var playerHalfWidth: number = this._player.width * 0.5;
@@ -33,20 +35,22 @@ module managers {
             // check if the distance between the player and th eother object is less 
             // than the minimum distance
             if (this.distance(startPoint, endPoint) < minDistance) {
+               
                 //check if it's an bird hit
                 if (object.name === "bird") {
                     this._lifeCount--;
-                                                        
-                    return this._lifeCount;
-                    
-                }
+                    return this._lifeCount.toString();
 
-                //check if it's a gold hit
-                if (object.name === "gold") {
-                    this._score++;
-                    return this._score;
                 }
-            }
+                
+              // check if it is an gold hit
+              if(object.name == "gold")
+              {
+                  this._score++;
+                  return this._score.toString();
+              }
+                
+           }
         }
     }
 }

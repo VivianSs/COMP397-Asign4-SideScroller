@@ -26,12 +26,12 @@ var managers;
                 //check if it's an bird hit
                 if (object.name === "bird") {
                     this._lifeCount--;
-                    return this._lifeCount;
+                    return this._lifeCount.toString();
                 }
-                //check if it's a gold hit
-                if (object.name === "gold") {
+                // check if it is an gold hit
+                if (object.name == "gold") {
                     this._score++;
-                    return this._score;
+                    return this._score.toString();
                 }
             }
         };
